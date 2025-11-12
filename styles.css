@@ -1,0 +1,133 @@
+/* Base Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Light gray background */
+    color: #333;
+}
+
+/* --- Header Styling (The Blue Bar) --- */
+.page-header {
+    background-color: #3f7bbf; /* Blue background for header */
+    color: white;
+    padding: 15px 0;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.page-header h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* --- Main Content Styling --- */
+main {
+    max-width: 800px; 
+    margin: 0 auto; 
+    padding: 20px;
+    background: #fff; 
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Search Section Layout */
+.search-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.input-group {
+    display: flex; /* Aligns input and button horizontally */
+    align-items: center;
+}
+
+/* Input Field */
+#superhero-query {
+    flex-grow: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #aaa;
+    border-radius: 0; 
+    font-size: 16px;
+}
+
+/* Search Button */
+#search-btn {
+    padding: 10px 20px;
+    background-color: #dc3545; 
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 0; 
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Separator Lines */
+hr {
+    border: 0;
+    height: 1px;
+    background: #eee;
+    margin: 20px 0;
+}
+
+.result-divider {
+    background: #ccc; 
+    margin-top: 5px;
+}
+
+/* Result Area Title */
+main h2 {
+    color: #333;
+    margin-top: 40px; 
+    margin-bottom: 5px;
+}
+
+/* --- Result Display Styling  --- */
+#result {
+    padding: 15px 0;
+    min-height: 100px;
+}
+
+/* Styling for a list of superheroes */
+#result ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+/* Styling for a single superhero result */
+#result h3 { 
+    color: #000; 
+    margin-top: 15px; 
+    margin-bottom: 0px; 
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#result h4 { 
+    color: #6c757d; 
+    font-weight: normal; 
+    font-style: italic;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+#result p {
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+.error-message {
+    color: #dc3545; /* Red color */
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: left; /* THIS ensures the message is left-aligned */
+    padding: 20px 0;
+}

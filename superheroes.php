@@ -1,4 +1,6 @@
 <?php
+// Set Content Type for AJAX response
+header('Content-Type: text/html; charset=utf-8');
 
 $superheroes = [
   [
@@ -63,10 +65,63 @@ $superheroes = [
   ], 
 ];
 
-?>
+// 1. Sanitize user input from the 'query' parameter 
+$raw_query = filter_input(INPUT_GET, 'query', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
+// Trim whitespace from the query for accurate checking
+$query = trim($raw_query);
+
+$results = [];
+
+if (empty($query)) {
+    // Case 1: Query is blank, return the full list of superheroes .
+    $results = $superheroes;
+
+} else {
+    // Case 2: Query is present, search for matches in 'name' or 'alias'.
+    $search_term = strtolower($query);
+
+    // Filter the array of superheroes [11]
+    foreach ($superheroes as $hero) {
+        // Use str_contains for substring matching (case-insensitive due to strtolower)
+        $alias_match = str_contains(strtolower($hero['alias']), $search_term);
+        $name_match = str_contains(strtolower($hero['name']), $search_term);
+
+        if ($alias_match || $name_match) {
+            $results[] = $hero;
+        }
+    }
+}
+
+// Format and output the results based on the number of matches
+
+if (empty($results)) {
+    // Case A: No superhero found
+    echo '<div class="error-message">SUPERHERO NOT FOUND</div>';
+
+} elseif (count($results) == 1 && !empty($query)) {
+    // Case B: Exactly one superhero found. Output detailed view.
+    $hero = $results[0]; 
+
+    
+    // Alias in <h3> tag 
+    echo "<h3>" . htmlentities($hero['alias']) . "</h3>";       
+    
+    // Name in <h4> tag [2]
+    echo "<h4>" . htmlentities($hero['name']) . "</h4>";        
+    
+    // Biography in <p> tag [2]
+    echo "<p>" . htmlentities($hero['biography']) . "</p>";     
+    
+} else {
+    // Case C: Multiple superheroes found, or all superheroes returned if query was blank 
+    
+    // Display the list of aliases
+    echo "<ul>";
+    foreach ($results as $hero) {
+        // Outputting the alias list
+        echo "<li>" . htmlentities($hero['alias']) . "</li>";
+    }
+    echo "</ul>";
+}
+?>

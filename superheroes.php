@@ -105,7 +105,7 @@ if (empty($results)) {
 
     
     // Alias in <h3> tag 
-    echo "<h3>" . htmlentities($hero['alias']) . "</h3>";       
+    echo "<h3>A.K.A " . htmlentities($hero['alias']) . "</h3>";       
     
     // Name in <h4> tag [2]
     echo "<h4>" . htmlentities($hero['name']) . "</h4>";        
